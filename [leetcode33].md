@@ -8,9 +8,10 @@
     * 如果mid大于起始点，说明旋转点在右侧
 
     * 如果mid小于起始点，说明旋转点在右侧
+* 经过二分查找，仍然是一个旋转数组结构
+* **先整理好思路**（注意归一条件，简化编程）
+* 对于二分法直接从只剩两个点开始分析，或者三个点吧。
 
-  * 经过二分查找，仍然是一个旋转数组结构
-**先整理好思路** 
 ```java 
 public static int search(int[] nums, int target) {
     if (nums.length == 0) return -1;
@@ -20,11 +21,12 @@ public static int search(int[] nums, int target) {
         while (start < end) {
             int mid = start + (end - start+1) / 2; //如果只剩下两个，即start+1=end 防止死循环。
                                                   // 如果是两个，那么一定是end。
+            									  //这个操作保证，只剩下两个时指向后一个，end-start=偶数时，指向后一个。
             if ( nums[mid] < nums[mid - 1]) {
                 indexOfRotate = mid;
                 break;
             } else if (nums[mid] > nums[start])
-                start = mid;   //不要加一，因为可能破坏旋转数组的结构
+                start = mid;   //不要加一，因为可能破坏旋转数组的结构，破坏了这一结构就不能再使用这个算//法了。
             else
                 end = mid-1 ;
         }
