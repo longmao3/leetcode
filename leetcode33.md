@@ -10,6 +10,7 @@
     * 如果mid小于起始点，说明旋转点在右侧
 
   * 经过二分查找，仍然是一个旋转数组结构
+
 **先整理好思路** 
 ```java 
 public static int search(int[] nums, int target) {
