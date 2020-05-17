@@ -24,7 +24,7 @@ class Solution {
             //如果i==mid 直接进入后面的复制语句。
             if( i!=mid && (j==end || nums[i]<=nums[j]) ){  //如果相等，那么应该是前面那个先
                 temp[k++]=nums[i++];
-                revP+=(j-mid);   // 前面的数组里面的数被放置，发现逆序。
+                revP+=(j-mid);   // 前面的数组里面的数被放置(由于可能后面的数据已经被放置了)，发现逆序。
             }else{
                 temp[k++]=nums[j++];
             }
